@@ -9,7 +9,7 @@ Toiminnot:
 * Piirrä kartta
 * Aseta sääsymbolit kartalle. Oletetaan, että aurinko on aina taivaalla auringonnousun jälkeen ja auringonlaskun jälkeen symbolina on kuu.
 * Päivitä sääsymbolit tietyin aikavälein
-* 
+* Ikoneina käytetään OpenWeather API:n tarjoamia .png -kuvia.
 
 Mitä tietoa tarvitaan rajapinnasta:
 
