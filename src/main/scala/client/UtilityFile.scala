@@ -1,3 +1,5 @@
+package client
+
 import  Utility.*
 
 object testUtility extends App:
