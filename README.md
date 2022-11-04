@@ -17,3 +17,5 @@ Mitä tietoa tarvitaan rajapinnasta:
   .initialResponse
   .main
     .temp
+
+tämä on tekstiä
