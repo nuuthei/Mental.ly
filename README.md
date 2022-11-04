@@ -2,7 +2,7 @@ SUUNNITELMA: SuomiSää appi
 
 Lyhyt kuvaus:
 
-Suomen sää on appi, joka piirtää kuvan Suomesta säätietoineen. Käytännössä tämä tarkoittaa kaupunkien säätilaa visualisoituna lämpötila-arvojen, aurinkojen, pilvien ja sadepisaroiden muodossa. Kaupungit ovat Helsinki, Turku, Tampere, Oulu, Rovaniemi, Kuopio ja Inari.
+Suomen sää on appi, joka piirtää kuvan Sumesta säätietoineen. Käytännössä tämä tarkoittaa kaupunkien säätilaa visualisoituna lämpötila-arvojen, aurinkojen, pilvien ja sadepisaroiden muodossa. Kaupungit ovat Helsinki, Turku, Tampere, Oulu, Rovaniemi, Kuopio ja Inari.
 
 Toiminnot:
 
