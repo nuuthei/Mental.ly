@@ -25,7 +25,7 @@ end AppModel
 
 object EnvironmentApp extends View(AppModel, 12, "Mental.ly"):
 
-  val menus: Vector[Menu] = Vector(new Start, new OpeningMenu, new ActivityMenu)
+  val menus: Vector[Menu] = Vector(new Start, new OpeningMenu, ActivityMenu)
 
   var mousePos = Pos(0,0)
 
