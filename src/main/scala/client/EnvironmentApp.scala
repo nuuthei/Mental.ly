@@ -25,13 +25,14 @@ end AppModel
 
 object EnvironmentApp extends View(AppModel, 12, "Mental.ly"):
 
-  val menus: Vector[Menu] = Vector(new Start, new OpeningMenu)
+  val menus: Vector[Menu] = Vector(new Start, new OpeningMenu, new ActivityMenu)
 
   var mousePos = Pos(0,0)
 
   var currentMenu: Menu = new Start
-  val background : Pic = rectangle(405, 720, LightCyan)
-
+  //val background : Pic = rectangle(405, 720, LightCyan)
+  val background : Pic = ImageUtility.GenerateButton(405, 720, 3, backgroundTypeA, ImageUtility.PatternSettings(true, 15))
+  
   private def placePic(placePic: Pic, picOnto: Pic, pos: Pos): Pic =
     picOnto.place(placePic, pos)
 

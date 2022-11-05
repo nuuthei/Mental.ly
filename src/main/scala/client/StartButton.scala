@@ -24,6 +24,6 @@ object StartButton extends AppButton(pos, GenerateButton(200, 150, 10, ColorSett
   override def clicked() =
     this.mySize = 0.8
     println("Change menu view from start to main menu.")
-    EnvironmentApp.currentMenu = EnvironmentApp.menus(1)
+    EnvironmentApp.currentMenu = EnvironmentApp.menus(2)
 
 end StartButton
