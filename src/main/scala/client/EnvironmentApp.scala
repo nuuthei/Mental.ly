@@ -6,6 +6,9 @@ import o1.*
 import math.{max, min}
 import scala.collection.immutable.Vector
 import o1.gui.FontExtensions
+import client.Menu
+import client.Start
+import client.OpeningMenu
 
 
 
@@ -22,10 +25,12 @@ end AppModel
 
 object EnvironmentApp extends View(AppModel, 12, "Mental.ly"):
 
+  val menus: Vector[Menu] = Vector(new Start, new OpeningMenu)
+
   var mousePos = Pos(0,0)
 
-  var currentMenu = new OpeningMenu
-  val background : Pic = rectangle(405, 720, White)
+  var currentMenu: Menu = new Start
+  val background : Pic = rectangle(405, 720, LightCyan)
 
   private def placePic(placePic: Pic, picOnto: Pic, pos: Pos): Pic =
     picOnto.place(placePic, pos)
