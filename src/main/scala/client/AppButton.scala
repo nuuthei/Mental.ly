@@ -1,6 +1,7 @@
 package client
 
 import o1.*
+import client.ImageUtility.GenerateButton
 
 /** An interactive graphics element that executes a function when clicked on */
 class AppButton(myPos: Pos, myPic: Pic) extends GraphicsElement(myPos, myPic):
