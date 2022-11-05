@@ -7,7 +7,7 @@ import client.ImageUtility.ColorSettings
 import client.ImageUtility.PatternSettings
 import client.GraphicsText
 import o1.gui.FontExtensions.textPic
-import client.EnvironmentApp
+import client.App
 import client.Menu
 import client.OpeningMenu
 import client.Start
@@ -20,6 +20,6 @@ object StartButton extends AppButton(pos, GenerateButton(200, 150, 10, buttonTyp
   override def clicked() =
     this.mySize = 0.8
     println("Change menu view from start to main menu.")
-    EnvironmentApp.currentMenu = EnvironmentApp.menus(2)
+    App.currentMenu = App.menus(2)
 
 end StartButton

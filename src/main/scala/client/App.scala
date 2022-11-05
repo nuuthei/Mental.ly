@@ -13,7 +13,7 @@ import client.OpeningMenu
 
 
 @main def main() =
-  EnvironmentApp.start()
+  App.start()
 
 object AppModel:
 
@@ -23,7 +23,7 @@ object AppModel:
 end AppModel
 
 
-object EnvironmentApp extends View(AppModel, 12, "Mental.ly"):
+object App extends View(AppModel, 12, "Mental.ly"):
 
   val menus: Vector[Menu] = Vector(new Start, new OpeningMenu, ActivityMenu)
 
@@ -61,4 +61,4 @@ object EnvironmentApp extends View(AppModel, 12, "Mental.ly"):
   override def onTick() =
     this.currentMenu.allElements.foreach(_.update())
 
-end EnvironmentApp
+end App

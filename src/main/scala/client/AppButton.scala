@@ -13,8 +13,8 @@ class AppButton(myPos: Pos, myPic: Pic) extends GraphicsElement(myPos, myPic):
   def isTouched: Boolean =
     val x = myPos.x - myPic.width / 2
     val y = myPos.y - myPic.height / 2
-    val mx = EnvironmentApp.mousePos.x
-    val my = EnvironmentApp.mousePos.y
+    val mx = App.mousePos.x
+    val my = App.mousePos.y
     mx > x && mx < x + myPic.width && my > y && my < y + myPic.height
 
   def clicked() =
