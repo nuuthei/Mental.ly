@@ -20,7 +20,7 @@ object AppModel:
 end AppModel
 
 
-object EnvironmentApp extends View(AppModel, 12, "App"):
+object EnvironmentApp extends View(AppModel, 12, "Mental.ly"):
 
   var mousePos = Pos(0,0)
 
