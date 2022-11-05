@@ -7,6 +7,7 @@ import Utility.*
 import ImageUtility.*
 import scala.collection.mutable.Buffer
 import client.ActivityButton
+import DayUtility.*
 
 object ActivityMenu extends Menu:
   //myElements: Vector[GraphicsElement] = Vector.empty
@@ -19,6 +20,8 @@ object ActivityMenu extends Menu:
   activities.addOne(Food(Time(60)))
   activities.addOne(Task(Time(180), "math"))
   activities.addOne(Free(Time(240), "free time"))
+
+  println(checkRecommendation(activities.toVector))
 
   def getActivities = this.activities
 

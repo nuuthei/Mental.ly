@@ -55,11 +55,15 @@ object Utility:
     def >(time: Time) = this.totalTime > time.totalTime
     def <=(time: Time) = this.totalTime <= time.totalTime
     def >=(time: Time) = this.totalTime >= time.totalTime
+    def +(time: Time): Time = Time(this.totalTime + time.totalTime)
 
   //25 min työtä, 5 min tauko, toistuu 4 kertaa, neljäs tauko on 15-30 min, tämän jälkeen toistuminen jatkuu
-  trait Activity(val name: String, val time: Time, val colorSettings: ColorSettings):
+  class Activity(val name: String, val time: Time, val colorSettings: ColorSettings):
     override def toString =
       "" + name + " | " + time
+
+  def combineActivities(first: Activity, second: Activity): Activity =
+    Activity(first.name, Time(first.time.totalTime + second.time.totalTime), first.colorSettings)
 
   //Activities
   class Break(time: Time) extends Activity("break", time, ColorSettings(Color(170, 190, 255), Color(60, 70, 150), Color(172, 182, 250)))
