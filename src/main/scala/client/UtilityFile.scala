@@ -3,6 +3,8 @@ package client
 import Utility.*
 import scala.collection.mutable.Buffer
 import scala.util.Random
+import ImageUtility.*
+import o1.*
 
 object testUtility extends App:
   val t = Time(123)
@@ -55,17 +57,24 @@ object Utility:
     def >=(time: Time) = this.totalTime >= time.totalTime
 
   //25 min työtä, 5 min tauko, toistuu 4 kertaa, neljäs tauko on 15-30 min, tämän jälkeen toistuminen jatkuu
-  trait Activity(val name: String, val time: Time):
+  trait Activity(val name: String, val time: Time, val colorSettings: ColorSettings):
     override def toString =
       "" + name + " | " + time
 
-  class Break(time: Time) extends Activity("break", time)
+  //Activities
+  class Break(time: Time) extends Activity("break", time, ColorSettings(Color(170, 190, 255), Color(60, 70, 150), Color(172, 182, 250)))
+  class Sleep(time: Time) extends Activity("sleep", time, ColorSettings(Color(180, 255, 230), Color(60, 150, 70), Color(175, 245, 225)))
 
-  class Task(time: Time, name: String) extends Activity(name, time):
+  class Free(time: Time, name: String) extends Activity(name, time, buttonTypeA)
+  class Food(time: Time) extends Activity("food", time, ColorSettings(Color(250, 200, 250), Color(220, 50, 220), Color(245, 195, 245)))
+  class Work(time: Time, name: String) extends Activity(name, time, ColorSettings(Color(250, 200, 180), Color(220, 50, 20), Color(245, 195, 170)))
+
+  class Task(time: Time, name: String) extends Activity(name, time, ColorSettings(Color(250, 240, 180), Color(220, 150, 20), Color(245, 235, 170))):
     //pomodoro
     def breakTask(method: DivisionMethod): Buffer[Activity] =
       method.function(this)
 
+  //Division methods
   def Pomodoro(task: Task): Buffer[Activity] =
     //initialize
     val taskCycle = Task(Time(25), task.name)
