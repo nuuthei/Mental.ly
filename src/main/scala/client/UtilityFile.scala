@@ -65,7 +65,7 @@ object Utility:
   class Break(time: Time) extends Activity("break", time, ColorSettings(Color(170, 190, 255), Color(60, 70, 150), Color(172, 182, 250)))
   class Sleep(time: Time) extends Activity("sleep", time, ColorSettings(Color(180, 255, 230), Color(60, 150, 70), Color(175, 245, 225)))
 
-  class Free(time: Time, name: String) extends Activity(name, time, buttonTypeA)
+  class Free(time: Time, name: String) extends Activity(name, time, ColorSettings(Color(220, 230, 255), Color(140, 150, 200), Color(210, 220, 245)))
   class Food(time: Time) extends Activity("food", time, ColorSettings(Color(250, 200, 250), Color(220, 50, 220), Color(245, 195, 245)))
   class Work(time: Time, name: String) extends Activity(name, time, ColorSettings(Color(250, 200, 180), Color(220, 50, 20), Color(245, 195, 170)))
 
