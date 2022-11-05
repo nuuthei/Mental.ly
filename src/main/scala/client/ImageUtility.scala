@@ -6,6 +6,7 @@ import ImageUtility.*
 import scala.collection.mutable.Buffer
 import scala.util.Random
 
+//Testing utility functions
 object testImageUtility extends App:
   //val s = ColorSettings(Color(170, 190, 255), Color(60, 70, 150), Color(150, 175, 240), Color(175, 185, 240))
   val s = ColorSettings(Color(170, 190, 255), Color(60, 70, 150), Color(172, 182, 250))

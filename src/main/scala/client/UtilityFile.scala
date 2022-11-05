@@ -15,6 +15,7 @@ object testUtility extends App:
   println(Time(123).toString(0))
   println(GetGreeting)
 
+//Useful utility functions
 object Utility:
   val divisionMethods: Buffer[DivisionMethod] = Buffer.empty
   val greetingBuffers: Buffer[TimeGreeting] = Buffer.empty
