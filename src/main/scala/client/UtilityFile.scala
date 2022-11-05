@@ -2,7 +2,7 @@ package client
 
 import Utility.*
 import scala.collection.mutable.Buffer
-
+import scala.util.Random
 
 object testUtility extends App:
   val t = Time(123)
@@ -11,12 +11,26 @@ object testUtility extends App:
   println(a)
 
   println(a.breakTask(divisionMethods(0)).mkString("\n"))
+  println(GetCurrentTime.toString(0))
+  println(Time(123).toString(0))
+  println(GetGreeting)
 
 object Utility:
   val divisionMethods: Buffer[DivisionMethod] = Buffer.empty
+  val greetingBuffers: Buffer[TimeGreeting] = Buffer.empty
+  //Division methods
   divisionMethods += DivisionMethod("Pomodoro", "This metdod divides tasks into cycles of 4 work", Pomodoro)
+  //Greeting buffers
+  greetingBuffers += TimeGreeting(Time(360), Time(540), Buffer("Good morning!"))
+  greetingBuffers += TimeGreeting(Time(540), Time(720), Buffer("Good day!"))
+  greetingBuffers += TimeGreeting(Time(720), Time(1080), Buffer("Good afternoon!"))
+  greetingBuffers += TimeGreeting(Time(1080), Time(1320), Buffer("Good evening!"))
+  greetingBuffers += TimeGreeting(Time(1320), Time(2000), Buffer("Good Night... \nMaybe you should go to bed"))
+  greetingBuffers += TimeGreeting(Time(0), Time(360), Buffer("Good Night... \nMaybe you should go to bed"))
 
   class DivisionMethod(val name: String, val description: String, val function: Task => Buffer[Activity])
+
+  class TimeGreeting(val start: Time, val end: Time, val greetings: Buffer[String])
 
   class Time(val totalTime: Int):
     def toClock: (Int, Int) =
@@ -27,6 +41,17 @@ object Utility:
       var hourString = ""
       if(totalTime >= 60) hourString = toClock(0) + "h "
       "" + hourString + toClock(1) + "min"
+    def toString(style: Int) =
+      if(style == 0) then
+        val h: String = "" + toClock(0)
+        val m: String = "" + toClock(1)
+        "" + "0" * (2 - h.length) + h + ":" + "0" * (2 - m.length) + m
+      else
+       "error"
+    def <(time: Time) = this.totalTime < time.totalTime
+    def >(time: Time) = this.totalTime > time.totalTime
+    def <=(time: Time) = this.totalTime <= time.totalTime
+    def >=(time: Time) = this.totalTime >= time.totalTime
 
   //25 min työtä, 5 min tauko, toistuu 4 kertaa, neljäs tauko on 15-30 min, tämän jälkeen toistuminen jatkuu
   trait Activity(val name: String, val time: Time):
@@ -69,6 +94,17 @@ object Utility:
         done = true
 
     taskBuffer
+
+  //Additional utility
+  def GetCurrentTime: Time =
+    val t = java.time.LocalTime.now()
+    Time(t.getHour * 60 + t.getMinute)
+
+  def GetGreeting: String =
+    val time = GetCurrentTime
+    val possible: Buffer[String] = Buffer.empty
+    greetingBuffers.filter(a => a.start <= time && a.end > time).foreach(b => possible.addAll(b.greetings))
+    possible(Random.between(0, possible.length))
 
 
 
