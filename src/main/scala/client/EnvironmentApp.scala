@@ -4,9 +4,7 @@ package client
 import client.Utility.*
 import o1.*
 import math.{max, min}
-
 import scala.collection.immutable.Vector
-
 import o1.gui.FontExtensions
 
 
@@ -18,11 +16,16 @@ object AppModel:
 
   val something = Break(Time(100))
 
+
 end AppModel
 
-object EnvironmentApp extends View(AppModel, 0.1, "App"):
 
-  val background : Pic = rectangle(400, 400, White)
+object EnvironmentApp extends View(AppModel, 12, "Mental.ly"):
+
+  var mousePos = Pos(0,0)
+
+  var currentMenu = new OpeningMenu
+  val background : Pic = rectangle(405, 720, White)
 
   private def placePic(placePic: Pic, picOnto: Pic, pos: Pos): Pic =
     picOnto.place(placePic, pos)
@@ -34,10 +37,22 @@ object EnvironmentApp extends View(AppModel, 0.1, "App"):
     FontExtensions.textPic(someActivity.toString)
 
   def makePic =
-    var image = background.place(makeStringPic(AppModel.something), Pos(100, 100))
+    var image = background
+    currentMenu.allElements.foreach(a => image = image.place(a.pic, a.pos))
     image
   end makePic
 
-  override def onTick() = ???
+  override def onMouseMove(newMousePos: Pos) =
+    this.mousePos = newMousePos
+
+  override def onClick(clickPos: Pos) =
+    currentMenu.allElements.foreach(a =>
+      a match
+        case elem: AppButton if elem.isTouched => elem.clicked()
+        case _ => DoNothing
+    )
+
+  override def onTick() =
+    this.currentMenu.allElements.foreach(_.update())
 
 end EnvironmentApp
