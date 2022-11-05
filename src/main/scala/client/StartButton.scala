@@ -13,13 +13,9 @@ import client.OpeningMenu
 import client.Start
 
 val pos = Pos(200, 300)
+val pic = textPic("Start", White, 40)
 
-object StartButton extends AppButton(pos, GenerateButton(200, 150, 10, buttonTypeA, basicPattern).place(textPic("Start", White, 40), Pos(50,50))):
-
-  //override def update() =
-    //if this.isTouched then this.mySize = 0.9 else this.mySize = 1.0
-
-  // override def isTouched: Boolean = EnvironmentApp.mousePos.distance(pos) <= (GenerateButton(100, 50, 10, ColorSettings(Blue, Cyan, LightPink), PatternSettings(true, 10)).width / 2.0)
+object StartButton extends AppButton(pos, GenerateButton(200, 150, 10, buttonTypeA, basicPattern).place(pic, Pos(50,50))):
 
   override def clicked() =
     this.mySize = 0.8

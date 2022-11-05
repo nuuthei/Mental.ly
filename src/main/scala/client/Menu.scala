@@ -16,6 +16,6 @@ class OpeningMenu extends Menu:
 end OpeningMenu
 
 class Start extends Menu:
-  var myElements: Vector[GraphicsElement] = Vector(StartButton, GraphicsText(Pos(125, 100), textPic("Hello there.", Black, 20)))
+  var myElements: Vector[GraphicsElement] = Vector(StartButton, GraphicsText(Pos(125, 100), textPic("Hello there.", Black, 20)), GraphicsText(Pos(80, 150), textPic("Press 'Start' to continue.", Black, 20)))
   def allElements: Vector[GraphicsElement] = this.myElements
 end Start

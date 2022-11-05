@@ -6,6 +6,7 @@ import o1.gui.FontExtensions.textPic
 import Utility.*
 import ImageUtility.*
 import scala.collection.mutable.Buffer
+import client.ActivityButton
 
 class ActivityMenu extends Menu:
   //myElements: Vector[GraphicsElement] = Vector.empty
@@ -33,7 +34,7 @@ class ActivityMenu extends Menu:
     for(i <- activities) do
       val button = GenerateButton(330, 50, 3, i.colorSettings, basicPattern)
       val text = i.name + " " * (30 - i.name.length) + i.time
-      elements.addOne(AppButton(Pos(200, startY + 60 * index), textPic(text, Black, 20).onto(button, Pos(25, 30))))
+      elements.addOne(ActivityButton(Pos(200, startY + 60 * index), (textPic(text, Black, 20).onto(button, Pos(25, 30))), i))
       index += 1
     elements.toVector
 
