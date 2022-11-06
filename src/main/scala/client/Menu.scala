@@ -8,6 +8,7 @@ import client.StartButton
 trait Menu:
   var myElements: Vector[GraphicsElement]
   def allElements: Vector[GraphicsElement]
+  App.changes = true
 end Menu
 
 class OpeningMenu extends Menu:

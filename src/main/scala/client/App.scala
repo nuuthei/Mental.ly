@@ -28,10 +28,13 @@ object App extends View(AppModel, 12, "Mental.ly"):
   val menus: Vector[Menu] = Vector(new Start, new OpeningMenu, ActivityMenu)
 
   var mousePos = Pos(0,0)
+  
+  var changes = true
 
   var currentMenu: Menu = new Start
   //val background : Pic = rectangle(405, 720, LightCyan)
   val background : Pic = ImageUtility.GenerateButton(405, 720, 3, backgroundTypeA, ImageUtility.PatternSettings(true, 15))
+  var lastPic: Pic = background
   
   private def placePic(placePic: Pic, picOnto: Pic, pos: Pos): Pic =
     picOnto.place(placePic, pos)
@@ -43,9 +46,17 @@ object App extends View(AppModel, 12, "Mental.ly"):
     FontExtensions.textPic(someActivity.toString)
 
   def makePic =
-    var image = background
-    currentMenu.allElements.foreach(a => image = image.place(a.pic, a.pos))
+    //var image = background
+    //currentMenu.allElements.foreach(a => image = image.place(a.pic, a.pos))
+    //image
+    var image = this.lastPic
+    if changes then
+      image = background
+      currentMenu.allElements.foreach(a => image = image.place(a.pic, a.pos))
+      lastPic = image
+      changes = false
     image
+    
   end makePic
 
   override def onMouseMove(newMousePos: Pos) =

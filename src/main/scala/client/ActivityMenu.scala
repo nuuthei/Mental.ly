@@ -41,6 +41,8 @@ object ActivityMenu extends Menu:
   def allElements: Vector[GraphicsElement] = this.myElements
 
   def buildActivityUI: Vector[GraphicsElement] =
+    App.changes = true
+    
     val elements: Buffer[GraphicsElement] = Buffer.empty
 
     val startY = 100
