@@ -28,8 +28,10 @@ object App extends View(AppModel, 12, "Mental.ly"):
   val menus: Vector[Menu] = Vector(new Start, new OpeningMenu, ActivityMenu)
 
   var mousePos = Pos(0,0)
-  
+
   var changes = true
+
+  var key = Key.I
 
   var currentMenu: Menu = new Start
   //val background : Pic = rectangle(405, 720, LightCyan)
@@ -56,7 +58,7 @@ object App extends View(AppModel, 12, "Mental.ly"):
       lastPic = image
       changes = false
     image
-    
+
   end makePic
 
   override def onMouseMove(newMousePos: Pos) =
@@ -71,5 +73,21 @@ object App extends View(AppModel, 12, "Mental.ly"):
 
   override def onTick() =
     this.currentMenu.allElements.foreach(_.update())
+
+    if this.key == Key.S then
+      ActivityMenu.startY += 200
+      println(ActivityMenu.startY)
+      ActivityMenu.myElements = ActivityMenu.buildActivityUI
+      this.key = Key.I
+    if this.key == Key.W then
+      ActivityMenu.startY -= 200
+      println(ActivityMenu.startY)
+      ActivityMenu.myElements = ActivityMenu.buildActivityUI
+      this.key = Key.I
+    this.key = Key.I
+
+  override def onKeyDown(pressed: Key) =
+    this.key = pressed
+
 
 end App

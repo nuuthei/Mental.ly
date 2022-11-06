@@ -10,6 +10,9 @@ import client.ActivityButton
 import DayUtility.*
 
 object ActivityMenu extends Menu:
+
+  var startY = 100
+
   //myElements: Vector[GraphicsElement] = Vector.empty
   private var activities: Buffer[Activity] = Buffer.empty
   activities.addOne(Sleep(Time(480)))
@@ -42,16 +45,16 @@ object ActivityMenu extends Menu:
 
   def buildActivityUI: Vector[GraphicsElement] =
     App.changes = true
-    
+
     val elements: Buffer[GraphicsElement] = Buffer.empty
 
-    val startY = 100
+    //val startY = 100
 
     var index = 0
     for(i <- activities) do
       val button = GenerateButton(330, 50, 3, i.colorSettings, basicPattern)
       val text = i.name + " " * (30 - i.name.length) + i.time
-      elements.addOne(ActivityButton(Pos(200, startY + 60 * index), (textPic(text, Black, 20).onto(button, Pos(25, 30))), i))
+      elements.addOne(ActivityButton(Pos(200, this.startY + 60 * index), (textPic(text, Black, 20).onto(button, Pos(25, 30))), i))
       index += 1
     elements.toVector
 
